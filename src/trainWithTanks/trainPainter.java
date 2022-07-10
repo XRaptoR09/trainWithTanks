@@ -43,11 +43,11 @@ public class trainPainter extends Frame{
 		int roofY = 100, roofWidth = 170, roofHeight = 5;
 		
 		int mainWidth = roofWidth - 20, mainHeight = 35;
-		int amountOfWindows = 4, windowHeight = 15;
+		int amountOfWindows = 5, windowHeight = 15;
 		
 		int spaceAround = mainWidth / ((amountOfWindows * 2) + 1);
 
-		int windowWidth = 15, windowPadding = spaceAround;
+		int windowWidth = 15, windowPadding = windowWidth;
 
 		int amountOfCarriages = 2;
 
