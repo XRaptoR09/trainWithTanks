@@ -22,9 +22,9 @@ public class trainPainter extends Frame{
 	public void paint(Graphics g) {
 		//! Carriage for variables
 		//*Declarating variables
-		int mainY = 418, mainWidth = 900, mainHeight = 100;
-		int leftConnectX = 150, connectSize = 40, connectPaddingFromBottom = 15;
-		int wheelDiameter = 80, wheelPadding = 20, amountOfWheels = 3, amountOfPairs = 3;
+		int mainY = 100, mainWidth = 240, mainHeight = 40;
+		int leftConnectX = 50, connectWidth = 6, connectHeight = 12, connectPaddingFromBottom = 15;
+		int wheelDiameter = 16, wheelPadding = 20, amountOfWheels = 3, amountOfPairs = 3;
 		//!Amount of colours should be the same as amountOfPairs
 		Color[] pairsColours = {Color.red, Color.green, Color.CYAN};
 
@@ -33,9 +33,9 @@ public class trainPainter extends Frame{
 		mainY = mainY + 30;
 		leftConnectX = leftConnectX + 8;
 
-		int	mainX = (leftConnectX + connectSize),
+		int	mainX = (leftConnectX + connectWidth),
 		
-		connectY = (((mainY + mainHeight) - connectPaddingFromBottom) - connectSize),
+		connectY = (((mainY + mainHeight) - connectPaddingFromBottom) - connectHeight),
 		rightConnectX = (mainX + mainWidth),
 		
 		wheelsY = (mainY + mainHeight),
@@ -53,9 +53,9 @@ public class trainPainter extends Frame{
 			g.setFont(new Font("Arial", Font.BOLD, 50));
 			g.drawString("Mistake in your code!!!".toUpperCase(), 30, 100);
 		}else{
-			g.drawRect(mainX, mainY, mainWidth, mainHeight);				//main
-			g.drawRect(leftConnectX, connectY, connectSize, connectSize);		//connect-left
-			g.drawRect(rightConnectX, connectY, connectSize, connectSize);	//connect-right
+			g.drawRect(mainX, mainY, mainWidth, mainHeight);						//main
+			g.drawRect(leftConnectX, connectY, connectWidth, connectHeight);			//connect-left
+			g.drawRect(rightConnectX, connectY, connectWidth, connectHeight);			//connect-right
 			for (int i = 0; i < amountOfPairs; i++) {
 				g.setColor(pairsColours[i]);
 				for (int j = 0; j < amountOfWheels; j++) {
