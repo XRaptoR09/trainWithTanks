@@ -2,7 +2,6 @@ package trainWithTanks;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.lang.*;
 
 public class trainPainter extends Frame{
 
@@ -41,9 +40,9 @@ public class trainPainter extends Frame{
 		int amountOfPlatforms = 3;
 
 		//*Carriage variables
-		int roofY = 100, roofWidth = 190, roofHeight = 5;
+		int roofY = 100, roofWidth = 170, roofHeight = 5;
 		
-		int mainWidth = 150, mainHeight = 35;
+		int mainWidth = roofWidth - 20, mainHeight = 35;
 		int amountOfWindows = 4, windowHeight = 15;
 		
 		int spaceAround = mainWidth / ((amountOfWindows * 2) + 1);
