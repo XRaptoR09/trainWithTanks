@@ -40,18 +40,22 @@ public class trainPainter extends Frame{
 		int amountOfPlatforms = 3;
 
 		//*Carriage variables
-		int roofY = 100, roofWidth = 170, roofHeight = 5;
+		int roofY = 100, roofHeight = 5;
 		
-		int mainWidth = roofWidth - 20, mainHeight = 35;
-		int amountOfWindows = 5, windowHeight = 15;
+		int mainHeight = 35;
+		int amountOfWindows = 7, windowHeight = 15;
 		
-		int spaceAround = mainWidth / ((amountOfWindows * 2) + 1);
+		int windowWidth = 15;
 
-		int windowWidth = 15, windowPadding = windowWidth;
-
+		int windowPadding = 20;
+		
 		int amountOfCarriages = 2;
-
+		
 		//*Countable variables
+		int mainWidth = ((windowWidth * amountOfWindows) + (windowPadding * (amountOfWindows + 1)));
+		int spaceAround = (mainWidth - (windowWidth * amountOfWindows)) / ((amountOfWindows * 2) + 1);
+		
+		int roofWidth = mainWidth + 20; 
 		//*Locomotive
 		//Добавляем смещение из-за начала координат вне Фрейма
 		locMainY = locMainY + 30;
@@ -169,9 +173,6 @@ public class trainPainter extends Frame{
 		windowsY = (mainY + (windowHeight / 2)),
 		windowX = (mainX + windowPadding);
 		
-		if (windowWidth != windowPadding){
-			windowX = (mainX + windowPadding) + ((windowPadding - windowWidth));
-		}
 
 		int pairShift = ((mainWidth) - (((wheelDiameter * amountOfWheels) * amountOfPairs) + (wheelPadding * 2)));
 		
@@ -181,6 +182,18 @@ public class trainPainter extends Frame{
 			if (roofWidth < mainWidth) {
 				System.out.println("Roof is too short!!!");
 			}else{
+				
+				g.setColor(Color.black);
+				for(int w = 0; w < amountOfWindows; w++) {									//windows
+					g.drawRect(windowX, windowsY, windowWidth, windowHeight);		
+					windowX = windowX + (windowWidth + windowPadding);
+				}
+				roofWidth = (windowX - mainX) + 20;
+				mainWidth = ((windowWidth * amountOfWindows) + (windowPadding * (amountOfWindows + 1)));
+				rightConnectX = (mainX + mainWidth);
+				wheel1X = (mainX + wheelPadding);
+				pairShift = ((mainWidth) - (((wheelDiameter * amountOfWheels) * amountOfPairs) + (wheelPadding * 2)));
+
 				for (int p = 0; p < amountOfPairs; p++) {
 					g.setColor(pairsColours[i]);
 					for (int j = 0; j < amountOfWheels; j++) {
@@ -189,25 +202,22 @@ public class trainPainter extends Frame{
 					}
 					wheel1X = wheel1X + pairShift;
 				}
+
 				g.setColor(Color.black);
-				g.drawRect(mainX, mainY, mainWidth, mainHeight);				//main
 				g.drawRect(roofX, roofY, roofWidth, roofHeight);				//roof
+				g.drawRect(mainX, mainY, mainWidth, mainHeight);				//main
 				g.drawRect(leftConnectX, connectY, connectWidth, connectHeight);	//connect-left
 				g.drawRect(rightConnectX, connectY, connectWidth, connectHeight);	//connect-right
-				for(int w = 0; w < amountOfWindows; w++) {									//windows
-					g.drawRect(windowX, windowsY, windowWidth, windowHeight);		
-					windowX = windowX + (spaceAround * 2);
-				}
 			}
 			leftConnectX = leftConnectX + ((connectWidth * 2) + mainWidth);
 			mainX = (leftConnectX + connectWidth);
 			roofX = (mainX - ((roofWidth - mainWidth) / 2));
 			rightConnectX = (mainX + mainWidth);
+
 			wheel1X = (mainX + wheelPadding);
 			windowX = (mainX + windowPadding);
-			if (windowWidth != windowPadding){
-				windowX = (mainX + windowPadding) + ((windowPadding - windowWidth));
-			}
+
+
 		}
 	}
 }
