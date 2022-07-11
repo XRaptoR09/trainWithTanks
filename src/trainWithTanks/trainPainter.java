@@ -18,10 +18,11 @@ public class trainPainter extends Frame{
 			}
 		});
 	}
+	
 	public void paint(Graphics g) {
 		//!Declarating variables
 		//*Locomotive variables
-		int locMainY = 100, locMainWidth = 120, locMainHeight = 40;
+		int locMainY = 100, locMainWidth = 120, locMainHeight = 60;
 		
 		int locCabinWidth = 35;
 		
@@ -34,7 +35,7 @@ public class trainPainter extends Frame{
 		int amountOfWheels = 2, amountOfPairs = 2;
 
 		
-		int platMainY = 125, platMainWidth = 120, platMainHeight = 15;
+		int platMainY = 145, platMainWidth = 120, platMainHeight = 15;
 		
 		int amountOfPlatforms = 2;
 
@@ -54,13 +55,13 @@ public class trainPainter extends Frame{
 		//*Carriage variables
 		int roofY = 100, roofHeight = 5;
 		
-		int mainHeight = 35;
+		int mainHeight = 55;
 		
 		int amountOfWindows = 4, windowHeight = 15;
 		int windowWidth = 15;
 		int windowPadding = 20;
 		
-		int amountOfCarriages = 0;
+		int amountOfCarriages = 4;
 		
 		//*Countable variables
 		int mainWidth = ((windowWidth * amountOfWindows) + (windowPadding * (amountOfWindows + 1)));
@@ -121,8 +122,6 @@ public class trainPainter extends Frame{
 		//!Platform
 		int platLeftConnectX = (locRightConnectX + connectWidth);
 
-		platMainY = platMainY + 30;
-
 		int	platMainX = (platLeftConnectX + connectWidth),
 		
 		platRightConnectX = (platMainX + platMainWidth);
@@ -154,8 +153,7 @@ public class trainPainter extends Frame{
 				platMainX = (platLeftConnectX + connectWidth);
 				platRightConnectX = (platMainX + platMainWidth);
 				wheelX = (platMainX + wheelPadding);
-			
-				//!Tank
+			//!Tank
 				//*Counting variables
 				
 				int bodyX = (platMainX + ((platMainWidth - bodyWidth) / 2)) - platformWidth;
@@ -256,7 +254,6 @@ public class trainPainter extends Frame{
 
 
 		//! Carriage 
-		roofY = roofY + 30;
 		//*Countable variables
 		int leftConnectX = (platRightConnectX + connectWidth);
 		
