@@ -8,7 +8,8 @@ public class trainPainter extends Frame{
 	public static void main(String[] args) {
 		trainPainter trainPainter = new trainPainter("My Train Painter");
 		trainPainter.setSize(1300, 700);
-		trainPainter.setVisible(true);
+		trainPainter.setVisible(false);
+		int trainMover = 100;
 	}
 	trainPainter(String title){
 		super(title);
@@ -35,9 +36,9 @@ public class trainPainter extends Frame{
 		int amountOfWheels = 2, amountOfPairs = 2;
 
 		
-		int platMainY = 145, platMainWidth = 120, platMainHeight = 15;
+		int platMainY = 175, platMainWidth = 120, platMainHeight = 15;
 		
-		int amountOfPlatforms = 2;
+		int amountOfPlatforms = 0;
 
 		//*Tank variables
 
@@ -53,7 +54,7 @@ public class trainPainter extends Frame{
 		
 
 		//*Carriage variables
-		int roofY = 100, roofHeight = 5;
+		int roofY = 130, roofHeight = 5;
 		
 		int mainHeight = 55;
 		
@@ -61,7 +62,7 @@ public class trainPainter extends Frame{
 		int windowWidth = 15;
 		int windowPadding = 20;
 		
-		int amountOfCarriages = 4;
+		int amountOfCarriages = 0;
 		
 		//*Countable variables
 		int mainWidth = ((windowWidth * amountOfWindows) + (windowPadding * (amountOfWindows + 1)));
@@ -279,7 +280,6 @@ public class trainPainter extends Frame{
 			if (roofWidth < mainWidth) {
 				System.out.println("Roof is too short!!!");
 			}else{
-				
 				g.setColor(Color.black);
 				for(int w = 0; w < amountOfWindows; w++) {									//windows
 					g.drawRect(windowX, windowsY, windowWidth, windowHeight);		
@@ -290,16 +290,13 @@ public class trainPainter extends Frame{
 				rightConnectX = (mainX + mainWidth);
 				wheel1X = (mainX + wheelPadding);
 				pairShift = ((mainWidth) - (((wheelDiameter * amountOfWheels) * amountOfPairs) + (wheelPadding * 2)));
-
 				for (int p = 0; p < amountOfPairs; p++) {
-					
 					for (int j = 0; j < amountOfWheels; j++) {
 						g.drawOval(wheel1X, wheelsY, wheelDiameter, wheelDiameter);		//2 wheels
 						wheel1X = wheel1X + wheelDiameter;
 					}
 					wheel1X = wheel1X + pairShift;
 				}
-
 				g.setColor(Color.black);
 				g.drawRect(roofX, roofY, roofWidth, roofHeight);				//roof
 				g.drawRect(mainX, mainY, mainWidth, mainHeight);				//main
@@ -310,11 +307,8 @@ public class trainPainter extends Frame{
 			mainX = (leftConnectX + connectWidth);
 			roofX = (mainX - ((roofWidth - mainWidth) / 2));
 			rightConnectX = (mainX + mainWidth);
-
 			wheel1X = (mainX + wheelPadding);
 			windowX = (mainX + windowPadding);
-
-
 		}
 	}
 }
