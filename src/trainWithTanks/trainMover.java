@@ -9,6 +9,7 @@ public class trainMover extends trainPainter{
 		trainMover trainMover = new trainMover("My Locomotive Mover");
 		trainMover.setSize(frameLength, 700);
 		trainMover.setVisible(true);
+
 	}
 	trainMover(String title){
 		super(title);
@@ -27,24 +28,23 @@ public class trainMover extends trainPainter{
 	//!Declarating variables
 	//*Locomotive variables
 	int locMainY = 100, locMainWidth = 120, locMainHeight = 60;
-	locMainY = locMainY + 30;
+	
 	
 	int locCabinWidth = 35;
 	
 	int locLeftConnectX = 50, connectWidth = 11, connectHeight = 6, connectPaddingFromBottom = 3;
-	locLeftConnectX = locLeftConnectX + 8;
 	
 	int wheelDiameter = 16, wheelPadding = 20, amountOfBlocks = 2;
 	int wheelConnectorWidth = 10;
 	//*Locomotive
 
-	int locCabinX = (locLeftConnectX + connectWidth);
+	int locCabinX = (locLeftConnectX + connectWidth),
 	locCabinHeight = (locMainHeight / 3),
 	locCabinY = (locMainY + locMainHeight) - locCabinHeight,
 
-	locMainX = (locCabinX + locCabinWidth),
 	
 	connectY = (((locMainY + locMainHeight) - connectPaddingFromBottom) - connectHeight),
+	locMainX = (locCabinX + locCabinWidth),
 	locRightConnectX = (locMainX + locMainWidth),
 	
 	wheelsY = (locMainY + locMainHeight),
@@ -66,14 +66,14 @@ public class trainMover extends trainPainter{
 			blockShift = blockShift / (amountOfBlocks - 1);
 		}
 
-	
-
-	//! Locomotive
+		//! Locomotive
 		g.drawRect(locMainX, locMainY, locMainWidth, locMainHeight);			//main
 		g.drawRect(locCabinX, locCabinY, locCabinWidth, locCabinHeight);		//cabin
 		g.drawRect(locLeftConnectX, connectY, connectWidth, connectHeight);		//connect-left
 		g.drawRect(locRightConnectX, connectY, connectWidth, connectHeight);	//connect-right
 		g.drawLine(glassX1, glassY1, glassX2, glassY2);		//glass
+		// locWheelX = locWheelX - ((connectWidth * 2) + locCabinWidth + locMainWidth);
+		// wheelConnectorX = wheelConnectorX - ((connectWidth *2) + locCabinWidth + locMainWidth);
 		for (int i = 0; i < amountOfBlocks; i++) {
 			for (int j = 0; j < 2; j++) {
 				g.drawOval(locWheelX, wheelsY, wheelDiameter, wheelDiameter);		//2 wheels
@@ -87,24 +87,24 @@ public class trainMover extends trainPainter{
 	}
 
 
-	public void go() throws Exception{
-		while(true) {
-			repaint();                    
-			Thread.sleep(50);
-			if(!isMoveToLeft) {
-				if(animationShift < (frameLength)) {
+	// public void go() throws Exception{
+	// 	while(true) {
+	// 		repaint();                    
+	// 		Thread.sleep(50);
+	// 		if(!isMoveToLeft) {
+	// 			if(animationShift < (frameLength)) {
 					
-					animationShift++;
-				}else{
-					isMoveToLeft=true;
-				}
-			}else{
-				if(animationShift > locMainX){
-					animationShift--;
-				}else{
-					isMoveToLeft=false;
-				}
-			}
-		}
-	}
+	// 				animationShift++;
+	// 			}else{
+	// 				isMoveToLeft=true;
+	// 			}
+	// 		}else{
+	// 			if(animationShift > locMainX){
+	// 				animationShift--;
+	// 			}else{
+	// 				isMoveToLeft=false;
+	// 			}
+	// 		}
+	// 	}
+	// }
 }

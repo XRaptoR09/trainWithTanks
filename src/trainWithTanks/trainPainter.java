@@ -8,7 +8,7 @@ public class trainPainter extends Frame{
 	public static void main(String[] args) {
 		trainPainter trainPainter = new trainPainter("My Train Painter");
 		trainPainter.setSize(1300, 700);
-		trainPainter.setVisible(false);
+		trainPainter.setVisible(true);
 		int trainMover = 100;
 	}
 	trainPainter(String title){
